@@ -245,7 +245,7 @@ function CharacterModal({
           }
         >
           {favorites.includes(
-            character.id
+            Number(character.id)
           )
             ? "❤️ Remove Favorite"
             : "🤍 Add Favorite"}

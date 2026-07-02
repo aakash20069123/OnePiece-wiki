@@ -71,6 +71,8 @@ function Islands() {
                   island.name
                 }
 
+                loading="lazy"
+
                 style={{
 
                   width:"100%",

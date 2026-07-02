@@ -33,9 +33,19 @@ function App() {
 
   });
 
-const [customCharacters,
-  setCustomCharacters] =
-  useState([]);
+const [customCharacters] =
+  useState(() => {
+
+    const saved =
+      localStorage.getItem(
+        "customCharacters"
+      );
+
+    return saved
+      ? JSON.parse(saved)
+      : [];
+
+  });
     const favoriteCharacters =
   characters.filter(
     (character) =>
@@ -52,22 +62,6 @@ const [customCharacters,
     );
 
   }, [favorites]);
-  useEffect(() => {
-
-  const saved =
-    localStorage.getItem(
-      "customCharacters"
-    );
-
-  if(saved){
-
-    setCustomCharacters(
-      JSON.parse(saved)
-    );
-
-  }
-
-}, []);
 
   function toggleTheme() {
 
@@ -143,35 +137,35 @@ const [customCharacters,
 
         <nav className="menu">
 
-          <a href="#">
+          <a href="#dashboard">
             Dashboard
           </a>
 
-          <a href="#">
+          <a href="#characters">
             Characters
           </a>
 
-          <a href="#">
+          <a href="#crews">
             Crews
           </a>
 
-          <a href="#">
+          <a href="#islands">
             Islands
           </a>
 
-          <a href="#">
+          <a href="#fruits">
             Fruits
           </a>
 
-          <a href="#">
+          <a href="#timeline">
             Timeline
           </a>
 
-          <a href="#">
+          <a href="#map">
             Map
           </a>
 
-          <a href="#">
+          <a href="#ai">
             AI
           </a>
 
@@ -227,7 +221,7 @@ const [customCharacters,
 
         {/* TITLE */}
 
-        <h1>
+        <h1 id="dashboard">
           Dashboard
         </h1>
 
@@ -285,7 +279,7 @@ const [customCharacters,
 
         {/* CHARACTERS */}
 
-        <div className="section">
+        <div className="section" id="characters">
 
           <h2>
             Character Gallery
@@ -348,6 +342,8 @@ className="favorite-badge"
                         alt={
                           character.name
                         }
+
+                        loading="lazy"
 
                       />
 
@@ -509,6 +505,7 @@ Add characters to favorites.
                   <img
                     src={character.image}
                     alt={character.name}
+                    loading="lazy"
                   />
 
                   <div className="character-content">
@@ -538,13 +535,13 @@ Add characters to favorites.
 
 </div>
 <EncyclopediaSearch />
-<Timeline />
-<Islands />
-<DevilFruits />
-<Crews />
+<div id="timeline"><Timeline /></div>
+<div id="islands"><Islands /></div>
+<div id="fruits"><DevilFruits /></div>
+<div id="crews"><Crews /></div>
 <Ships />
-<WorldMap />
-<AIAssistant />
+<div id="map"><WorldMap /></div>
+<div id="ai"><AIAssistant /></div>
 <AIBuilder />
       </main>
 

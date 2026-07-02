@@ -16,33 +16,6 @@ margin-top:20px;
 
 }
 
-.timeline-card{
-
-background:
-rgba(
-255,
-255,
-255,
-0.05
-);
-
-backdrop-filter:
-blur(10px);
-
-border-radius:20px;
-
-padding:20px;
-
-transition:.3s;
-
-}
-
-.timeline-card:hover{
-
-transform:
-translateY(-5px);
-
-}
 .timeline-header{
 
 margin-bottom:15px;
